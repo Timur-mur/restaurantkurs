@@ -18,8 +18,8 @@
           <router-link to="/сhat" class="navbar-item"> Чат </router-link>
           <div class="navbar-item">
             <div class="buttons">
-              <router-link to="/log-in" class="button is-light"> Вход </router-link>
-              
+              <router-link to="/log-in" class="button is-light" v-if="!isAuthenticated"> Вход </router-link>
+              <button  class="button is-light" v-if="isAuthenticated" @click="LogOut()"> Выход </button>
               <router-link to="/cart" class="button is-success">
                 <span class="icon"><i class="fas fa-shopping-cart"></i></span>
 <!--                <span> Корзина ({{cartTotalLength}})</span>-->
@@ -34,6 +34,7 @@
 
 <script>
 import axios from "axios";
+import {mapGetters} from "vuex";
 
 export default {
   name: "Navbar",
@@ -42,12 +43,25 @@ export default {
       showMobileMenu: false,
       cart:{
         items: []
-      }
+      },
+      username: '',
+      password: '',
+      errors: [],
     }
   },
   mounted() {
+    this.$store.commit('initializeStore')
   },
-  computed: {
+  methods:{
+    LogOut(){
+      this.$store.commit('removeToken')
+      this.$router.push('/log-in')
+    }
+  },
+  computed:{
+    ...mapGetters({
+         isAuthenticated: "isAuthenticated",
+    }),
   }
 }
 </script>

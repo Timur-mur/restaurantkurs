@@ -4,11 +4,17 @@
     <div class="columns">
       <div class="column is-4 is-offset-4">
         <h1 class="title"> Регистрация </h1>
-        <form @submit.prevent="submitForm">
+        <form ref="registerForm" @submit.prevent="submitForm">
           <div class="field">
             <label>Имя пользователя</label>
             <div class="control">
               <input type="text" class="input" v-model="username">
+            </div>
+          </div>
+          <div class="field">
+            <label>E-mail</label>
+            <div class="control">
+              <input type="email" class="input" v-model="email">
             </div>
           </div>
           <div class="field">
@@ -23,9 +29,12 @@
               <input type="password" class="input" v-model="password2">
             </div>
           </div>
-          <div class="notification is-danger" v-if="errors.length">
-            <p v-for="error in errors" v-bind:key="error">{{ error }}</p>
-          </div>
+          <dt v-for="(values, name) in errors" :key="name">
+                <dl>
+                    <div v-if="Array.isArray(values)"> <li v-for="value in values" :key="value"> {{ value }} </li></div>
+                    <div v-else> <li> {{ values }} </li> </div>
+                </dl>
+            </dt>
           <div class="field">
             <div class="control">
               <button class="button is-dark"> Зарегистрироваться </button>
@@ -49,6 +58,7 @@ export default {
   data(){
     return{
       username: '',
+      email: '',
       password: '',
       password2: '',
       errors: [],
@@ -62,19 +72,21 @@ export default {
       this.errors = []
       if (this.username ==='')
         this.errors.push('Введите имя пользователя')
+       if (this.email ==='')
+        this.errors.push('Введите e-mail')
       if (this.password ==='')
         this.errors.push('Введите пароль')
       if (this.password !== this.password2)
         this.errors.push('Пароли не совпадают')
-      if (!this.errors.length)
-      {
-        const formData = {
-          username: this.usernam,
-          password: this.password
-        }
+      if (!this.errors.length) {
         axios
-            .post('api/v1/users/', formData)
-            .then(response=>{
+            .post('http://127.0.0.1:8000/auth/users/', {
+              username: this.username,
+              password: this.password,
+              password2: this.password2,
+              email: this.email,
+            })
+            .then(response => {
               toast({
                 message: 'Регистрация прошла успешно! Войдите в аккаунт',
                 type: 'is-success',
@@ -84,24 +96,16 @@ export default {
                 position: 'bottom-right',
               })
               this.$router.push('log-in')
+              console.log(response)
             })
-            .catch(error =>{
-              if(error.response){
-                for(const property in error.response.data){
-                  this.errors.push(`${property}: ${error.response.data[property]}`)
-                }
-                console.log(JSON.stringify(error.response.data))
-              }
-              else if (error.message){
-                this.errors.push("Что-то пошло не так. Попробуйте еще раз")
-                console.log(JSON.stringify(error))
-              }
+            .catch(error => {
+              this.errors = error.response.data;
+              console.log(this.errors);
             })
-
+        }
       }
-    }
-  },
-}
+    },
+  }
 </script>
 
 <style scoped>

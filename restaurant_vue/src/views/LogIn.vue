@@ -36,6 +36,7 @@
 <script>
 import Navbar from "@/components/Navbar";
 import axios from "axios";
+import {toast} from "bulma-toast";
 export default {
   name: "LogIn",
   components: {Navbar},
@@ -50,36 +51,33 @@ export default {
     document.title = 'Вход | Эmurr'
   },
   methods: {
-    async submitForm(){
+     submitForm(){
       axios.defaults.headers.common['Authorization'] = ""
-      localStorage.removeItem("token")
 
       const formData = {
         username: this.username,
         password: this.password
       }
-      await axios
-          .post("api/v1/token/login", formData)
+       axios
+          .post("http://localhost:8000/auth/token/login/", formData)
           .then(response=>{
             const token = response.data.auth_token
             this.$store.commit('setToken', token)
             axios.defaults.headers.common["Authorization"] = "Token" + token
+            localStorage.setItem("username", this.username)
             localStorage.setItem("token", token)
-            const toPath = this.$route.query.to || '/cart'
-
-            this.$route.push(toPath)
+            this.$router.push("/cart")
           })
           .catch(error=>{
-            if(error.response) {
-              for (const property in error.response.data){
-                this.errors.push(`${property}: ${error.response.data[property]}`)
-              }
-            } else {
-              this.errors.push('Что-то пошло не так. Попробуйте еще раз')
-              console.log(JSON.stringify(error))
-            }
+            toast({
+                message: 'Что-то пошло не так. Попробуйте снова. Возможно, вы не активировали E-mail',
+                type: 'is-danger',
+                dismissible: true,
+                pauseOnHover: true,
+                duration: 20000,
+                position: 'bottom-right',
+              })
           })
-
     }
   }
 }

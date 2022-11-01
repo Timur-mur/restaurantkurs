@@ -1,11 +1,8 @@
-from django.http import Http404
-from django.shortcuts import render
-from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
 from .models import Product, Category
-from .serializers import ProductSerializer, CategorySerializer, ProductCreateSerializer, CategoryProductSerializer
+from .serializers import ProductSerializer, CategorySerializer, ProductCreateSerializer, CategoryCreateSerializer
 
 
 @api_view(['GET'])
@@ -14,8 +11,8 @@ def apiOverview(request):
         'Product List': '/product-list/',
         'Product Detail': '/product-list/<str:cat_id>',
         'Category List': '/category-list/',
-        'Detail View': '/product-cat/<str:slug>',
-        'Create': '/product-create/',
+        'Create Category': '/category-create/',
+        'Create Product': '/product-create/',
         'Update': '/product-update/<str:pk>/',
         'Delete': '/product-delete/<str:pk>/',
     }
@@ -43,17 +40,17 @@ def CategoryList(request):
     return Response(serializer.data)
 
 
-@api_view(['GET'])
-def ProductCategory(request, slug):
-    category = Category.objects.get(slug=slug)
-    serializer = CategoryProductSerializer(category, many=False)
+@api_view(['POST'])
+def CategoryCreate(request):
+    serializer = CategoryCreateSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
     return Response(serializer.data)
 
 
 @api_view(['POST'])
 def ProductCreate(request):
     serializer = ProductCreateSerializer(data=request.data)
-
     if serializer.is_valid():
         serializer.save()
     return Response(serializer.data)

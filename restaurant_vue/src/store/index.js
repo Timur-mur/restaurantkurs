@@ -8,17 +8,17 @@ export default createStore({
     isAuthenticated: false,
     token: '',
     username:'',
-    cart: null,
+    cart: [],
   },
   getters: {
     isAuthenticated: (state) => state.isAuthenticated,
     token: (state) => state.token,
     username: (state) => state.username,
-    productQuantity: (state) => product => {
-      const item = state.cart.find(i => i.id === product.id)
-      if (item) return item.quantity
-      else return null
-    },
+    // productQuantity: (state) => product => {
+    //   const item = state.cart.find(i => i.id === product.id)
+    //   if (item) return item.quantity
+    //   else return null
+    // },
     cartItems: (state) => {
       return state.cart
     },
@@ -32,6 +32,7 @@ export default createStore({
         state.token = localStorage.getItem("token")
         state.isAuthenticated = true
         state.username = localStorage.getItem("username")
+        localStorage.setItem('cart',[])
       } else {
         state.token = ""
         state.isAuthenticated = false
@@ -48,7 +49,7 @@ export default createStore({
       localStorage.removeItem("token")
       localStorage.removeItem("username")
       state.isAuthenticated = false
-      state.cart = null
+      state.cart.length = 0
     },
     addToCart(state, product){
       let item = state.cart.find( i => i.id === product.id)

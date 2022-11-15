@@ -15,7 +15,9 @@
           <router-link to="/menu" class="navbar-item"> Меню </router-link>
           <router-link to="/about" class="navbar-item"> О нас </router-link>
           <router-link to="/reviews" class="navbar-item"> Отзывы </router-link>
-          <router-link to="/chat" class="navbar-item"> Чат </router-link>
+          <router-link to="/orders" class="navbar-item" v-if="username==='root'"> Заказы </router-link>
+
+<!--          <router-link to="/chat" class="navbar-item"> Чат </router-link>-->
           <div class="navbar-item">
             <div class="buttons">
               <router-link to="/log-in" class="button is-light" v-if="!isAuthenticated"> Вход </router-link>
@@ -41,12 +43,6 @@ export default {
   data(){
     return{
       showMobileMenu: false,
-      cart:{
-        items: []
-      },
-      username: '',
-      password: '',
-      errors: [],
     }
   },
   mounted() {
@@ -60,7 +56,8 @@ export default {
   },
   computed:{
     ...mapGetters({
-         isAuthenticated: "isAuthenticated",
+          isAuthenticated: "isAuthenticated",
+          username: "username"
     }),
   }
 }

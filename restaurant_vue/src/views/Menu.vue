@@ -261,7 +261,7 @@ export default {
            .post('http://localhost:8000/api/v1/product-create/', formData)
            .then(response => {
               toast({
-                  message: 'Блюдо б ыло добавлено',
+                  message: 'Блюдо было добавлено',
                   type: 'is-success',
                   dismissible: true,
                   pauseOnHover: true,
@@ -310,7 +310,7 @@ export default {
             })
     },
     DeleteCategory(cat_id){
-       axios.defaults.headers.common["Authorization"] = "Token" + localStorage.getItem("token")
+       axios.defaults.headers.common["Authorization"] = "Token " + localStorage.getItem("token")
 
        axios
            .delete('http://localhost:8000/api/v1/category-delete/' + cat_id )
@@ -326,7 +326,7 @@ export default {
           })
     },
     DeleteProduct(prod_id){
-       axios.defaults.headers.common["Authorization"] = "Token" + localStorage.getItem("token")
+       axios.defaults.headers.common["Authorization"] = "Token " + localStorage.getItem("token")
 
        axios
            .delete('http://localhost:8000/api/v1/product-delete/' + prod_id )

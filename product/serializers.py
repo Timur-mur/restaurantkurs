@@ -46,7 +46,7 @@ class OrdersSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Orders
-        frelds = (
+        fields = (
             "username_id",
             "table",
             "product_name",

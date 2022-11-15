@@ -1,3 +1,16 @@
-from django.test import TestCase
+from django.urls import reverse
+from rest_framework.test import APITestCase
+from rest_framework import status
 
-# Create your tests here.
+
+class TestListCreateCategory(APITestCase):
+
+    def test_create_category(self):
+        cat_dict = {"name": "test"}
+        response = self.client.post(reverse('cat_create'), cat_dict)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+    def test_create_product(self):
+        prod_dict = {"category": "testcat", "name": "testname", "description": "testdesc", "price": "100"}
+        response = self.client.post(reverse('prod_create'), prod_dict)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)

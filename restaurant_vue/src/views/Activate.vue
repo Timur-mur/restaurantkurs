@@ -19,14 +19,14 @@
               </div>
             </form>
           </div>
-          <div class="field">
-              <button class="button is-dark"  v-if="isAuthenticated">
-                <router-link to="/cart">В корзину</router-link>
-              </button>
-              <button class="button is-dark"  v-if="!isAuthenticated">
-                <router-link to="/log-in">Войти</router-link>
-              </button>
-          </div>
+<!--          <div class="field">-->
+<!--              <button class="button is-dark"  v-if="isAuthenticated">-->
+<!--                <router-link to="/cart">В корзину</router-link>-->
+<!--              </button>-->
+<!--              <button class="button is-dark"  v-if="!isAuthenticated">-->
+<!--                <router-link to="/log-in">Войти</router-link>-->
+<!--              </button>-->
+<!--          </div>-->
       </div>
      </div>
   </div>
@@ -53,6 +53,7 @@ export default {
     if( this.uid !== undefined && this.token !== undefined){
       if(this.uid.length > 0 && this.token.length > 0 )
         this.activate()
+        this.$router.push("/cart")
     }
   },
   methods:{

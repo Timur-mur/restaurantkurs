@@ -1,6 +1,7 @@
 from django.shortcuts import render
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from .models import Feedbacks
 from django.contrib.auth.models import User
 from .serializers import FeedbacksListSerializer, FeedbacksCreateSerializer
@@ -23,13 +24,11 @@ def FeedbacksList(request):
 
 
 @api_view(['POST'])
+@permission_classes([IsAuthenticated])
 def FeedbacksCreate(request):
-    authorName = User.objects.all()
-    dict = {
-        "author": authorName.username,
-        "text": Feedbacks.text,
-    }
     serializer = FeedbacksCreateSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save()
-    return Response(serializer.data)
+        return Response({"status": "Отзыв добавлен"})
+    else:
+        return Response({"status": "Error"})

@@ -1,3 +1,4 @@
+from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
@@ -13,8 +14,9 @@ def apiOverview(request):
         'Category List': '/category-list/',
         'Create Category': '/category-create/',
         'Create Product': '/product-create/',
-        'Update': '/product-update/<str:pk>/',
-        'Delete': '/product-delete/<str:pk>/',
+        'Update Product': '/product-update/<str:pk>/',
+        'Delete Category': '/category-delete/<str:pk>/',
+        'Delete Product': '/product-delete/<str:pk>/',
     }
     return Response(api_urls)
 
@@ -54,3 +56,36 @@ def ProductCreate(request):
     if serializer.is_valid():
         serializer.save()
     return Response(serializer.data)
+
+
+@api_view(['POST'])
+def ProductUpdate(request, pk):
+    product = Product.objects.get(id=pk)
+    serializer = ProductCreateSerializer(instance=product, data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+    return Response(serializer.data)
+
+
+@api_view(['DELETE'])
+def CategoryDelete(request, pk):
+    try:
+        category = Category.objects.get(id=pk)
+    except Category.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    if request.method == "DELETE":
+        category.delete()
+    return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+@api_view(['DELETE'])
+def ProductDelete(request, pk):
+    try:
+        product = Product.objects.get(id=pk)
+    except Product.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    if request.method == "DELETE":
+        product.delete()
+    return Response(status=status.HTTP_204_NO_CONTENT)
+
+

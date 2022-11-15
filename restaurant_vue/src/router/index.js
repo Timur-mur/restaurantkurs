@@ -6,6 +6,7 @@ import Cart from "@/views/Cart";
 import SignUp from "@/views/SignUp";
 import Activate from "@/views/Activate";
 import LogIn from "@/views/LogIn";
+import Chat from "@/views/Chat";
 import { onActivated } from "vue";
 
 const routes = [
@@ -16,6 +17,7 @@ const routes = [
   {path: '/sign-up', component: SignUp, name: "Эmurr Регистрация"},
   {path: '/activate/:uid/:token', component: Activate, name:"Эmurr Активация аккаунта"},
   {path: '/log-in', component: LogIn, name: "Эmurr Вход"},
+  {path: '/chat', component: Chat, name: "Эmurr Чат"},
 ]
 
 const router = createRouter({

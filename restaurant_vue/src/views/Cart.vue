@@ -6,7 +6,7 @@
         <h1 class="title">Корзина</h1>
       </div>
       <div class="column is-12 box">
-        <table class="table is-fullwidth" v-if="cartTotalLength">
+        <table class="table is-fullwidth" v-if="products!==null">
           <thead>
             <tr>
               <th>Блюдо</th>
@@ -17,8 +17,13 @@
             </tr>
           </thead>
           <tbody>
-            <CartItem v-for="item in cart.items" v-bind:key="item.Products.id" v-bind:initialItem="item" v-on:removeFromCart="removeFromCart"/>
+            <CartItem v-for="product in products" v-bind:key="product.id" :product="product"/>
           </tbody>
+          <thead>
+            <tr>
+              <th>Общая стоимость: {{cart_total}}</th>
+            </tr>
+          </thead>
         </table>
         <p v-else> Ваша корзина пуста </p>
       </div>
@@ -33,28 +38,18 @@ import axios  from "axios";
 export default {
   name: "Cart",
   components: {Navbar, CartItem},
-  data(){
-    return{
-      cart:{
-        items: []
-      }
-    }
+  mounted() {
+    document.title = 'Корзина | Эmurr'
   },
-  // mounted() {
-  //   // this.$store.dispatch('initStore')
-  //   this.cart = this.$store.state.cart
-  //   document.title = 'Корзина | Эmurr'
-  // },
   methods:{
-    removeFromCart(item){
-      this.cart.items = this.cart.items.filter(i => i.Products.id !== item.Products.id)
-    },
+
   },
   computed: {
-    cartTotalLength(){
-      return this.cart.items.reduce((acc, curVal) =>{
-        return acc+=curVal.quantity
-      },0)
+    products(){
+      return this.$store.getters.cartItems
+    },
+    cart_total(){
+      return this.$store.getters.cartTotal
     }
   }
 }

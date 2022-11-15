@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Category, Product
+from .models import Category, Product, Orders
 
 
 class ProductSerializer(serializers.ModelSerializer):
@@ -39,4 +39,16 @@ class ProductCreateSerializer(serializers.ModelSerializer):
             "name",
             "description",
             "price"
+        )
+
+
+class OrdersSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Orders
+        frelds = (
+            "username_id",
+            "table",
+            "product_name",
+            "quantity"
         )

@@ -45,6 +45,7 @@ INSTALLED_APPS = [
 
     'product',
     'feedbacks',
+    'chat',
 
 ]
 CORS_ORIGIN_ALLOW_ALL = True

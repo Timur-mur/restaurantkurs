@@ -70,7 +70,7 @@ export default {
           })
           .catch(error=>{
             toast({
-                message: 'Что-то пошло не так. Попробуйте снова. Возможно, вы не активировали E-mail',
+                message: 'Что-то пошло не так. Попробуйте снова.',
                 type: 'is-danger',
                 dismissible: true,
                 pauseOnHover: true,

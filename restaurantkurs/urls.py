@@ -8,5 +8,6 @@ urlpatterns = [
     path('auth/', include('djoser.urls.authtoken')),
     path('auth/', include('djoser.urls.jwt')),
     path('api/v1/', include('product.urls')),
-    path('api/v2/', include('feedbacks.urls'))
+    path('api/v2/', include('feedbacks.urls')),
+    path('api/v3/', include('chat.urls'))
 ]

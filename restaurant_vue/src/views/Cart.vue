@@ -63,7 +63,6 @@ export default {
     this.$store.commit("updateCartFromLocalStorage")
     document.title = 'Корзина | Эmurr'
     this.GetUserId()
-    console.log(this.products)
   },
   methods:{
     GetUserId(){

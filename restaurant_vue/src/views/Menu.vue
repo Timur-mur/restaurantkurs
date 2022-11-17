@@ -237,7 +237,6 @@ export default {
           .get('http://localhost:8000/api/v1/category-list/')
           .then(response=>{
             this.category = response.data
-            console.log(response.data)
             document.title ='Меню | Эmurr'
           })
   },

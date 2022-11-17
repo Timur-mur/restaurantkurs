@@ -105,6 +105,13 @@ def OrdersView(request):
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
+@api_view(['GET'])
+def GetCliOrder(request, pk):
+    orders = Orders.objects.all().filter(username_id=pk)
+    serializer = OrdersListSerializer(orders, many=True)
+    return Response(serializer.data)
+
+
 @api_view(['DELETE'])
 def DeleteOrder(request, pk):
     try:

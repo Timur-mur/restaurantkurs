@@ -32,7 +32,6 @@ export default createStore({
         state.token = localStorage.getItem("token")
         state.isAuthenticated = true
         state.username = localStorage.getItem("username")
-        localStorage.setItem('cart',[])
       } else {
         state.token = ""
         state.isAuthenticated = false
@@ -49,6 +48,7 @@ export default createStore({
       localStorage.removeItem("token")
       localStorage.removeItem("username")
       state.isAuthenticated = false
+      localStorage.removeItem("cart")
       state.cart.length = 0
     },
     addToCart(state, product){

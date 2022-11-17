@@ -11,7 +11,8 @@ urlpatterns = [
     path('category-list/', views.CategoryList),
     path('product-update/<str:pk>', views.ProductUpdate),
     path('category-delete/<str:pk>', views.CategoryDelete),
-    path('product-delete/<str:pk>', views.ProductDelete),
+    path('product-delete/<str:pk>', views.ProductDelete, name="delete_prod"),
     path('orders', views.OrdersView),
+    path('orderscli/<str:pk>', views.GetCliOrder),
     path('orders-delete/<str:pk>', views.DeleteOrder),
 ]

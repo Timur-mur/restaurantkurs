@@ -8,7 +8,7 @@ import Activate from "@/views/Activate";
 import LogIn from "@/views/LogIn";
 import Chat from "@/views/Chat";
 import AdminOrders from "@/views/AdminOrders";
-import { onActivated } from "vue";
+import Client from "@/views/Client";
 
 const routes = [
   {path:'/', component: main, name: "ЭMurr"},
@@ -19,7 +19,8 @@ const routes = [
   {path: '/activate/:uid/:token', component: Activate, name:"Эmurr Активация аккаунта"},
   {path: '/log-in', component: LogIn, name: "Эmurr Вход"},
   {path: '/chat', component: Chat, name: "Эmurr Чат"},
-  {path: '/orders', component:AdminOrders , name: "Эmurr Заказы"},
+  {path: '/orders', component: AdminOrders , name: "Эmurr Заказы"},
+  {path: '/client', component: Client , name: "Эmurr Заказы клиента"},
 ]
 
 const router = createRouter({

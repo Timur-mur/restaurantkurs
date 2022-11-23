@@ -1,9 +1,34 @@
 <template>
-<Navbar></Navbar>
+  <header class="header">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="header_content d-flex flex-row align-items-center justify-content-start">
+						<div class="logo">
+							<router-link to="/">
+								<div>The ЭMurr</div>
+								<div>restaurant</div>
+							</router-link>
+						</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
   <div class="page-sign-up">
-    <div class="columns">
+		<img style="width: 1920px; height:500px" src="../assets/images/home.jpg">
+		<div class="home_container">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<div class="home_content text-center">
+							<div class="home_subtitle page_subtitle">Авторизация</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
       <div class="column is-4 is-offset-4">
-        <h1 class="title"> Вход </h1>
         <form @submit.prevent="submitForm">
           <div class="field">
             <label>Имя пользователя</label>
@@ -30,7 +55,6 @@
         </form>
       </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -66,7 +90,7 @@ export default {
             axios.defaults.headers.common["Authorization"] = "Token" + token
             localStorage.setItem("username", this.username)
             localStorage.setItem("token", token)
-            this.$router.push("/cart")
+            this.$router.push("/menu")
           })
           .catch(error=>{
             toast({

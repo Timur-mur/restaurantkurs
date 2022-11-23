@@ -1,9 +1,34 @@
 <template>
-  <Navbar></Navbar>
+  <header class="header">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="header_content d-flex flex-row align-items-center justify-content-start">
+						<div class="logo">
+							<router-link to="/">
+								<div>The ЭMurr</div>
+								<div>restaurant</div>
+							</router-link>
+						</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
   <div class="page-sign-up">
-    <div class="columns">
+		<img style="width: 1920px; height:500px" src="../assets/images/home.jpg">
+		<div class="home_container">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<div class="home_content text-center">
+							<div class="home_subtitle page_subtitle">Регистрация</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
       <div class="column is-4 is-offset-4">
-        <h1 class="title"> Регистрация </h1>
         <form ref="registerForm" @submit.prevent="submitForm">
           <div class="field">
             <label>Имя пользователя</label>
@@ -45,7 +70,52 @@
         </form>
       </div>
     </div>
-  </div>
+<!--  <div class="page-sign-up">-->
+<!--    <div class="columns">-->
+<!--      <div class="column is-4 is-offset-4">-->
+<!--        <h1 class="title"> Регистрация </h1>-->
+<!--        <form ref="registerForm" @submit.prevent="submitForm">-->
+<!--          <div class="field">-->
+<!--            <label>Имя пользователя</label>-->
+<!--            <div class="control">-->
+<!--              <input type="text" class="input" v-model="username">-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="field">-->
+<!--            <label>E-mail</label>-->
+<!--            <div class="control">-->
+<!--              <input type="email" class="input" v-model="email">-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="field">-->
+<!--            <label>Пароль</label>-->
+<!--            <div class="control">-->
+<!--              <input type="password" class="input" v-model="password">-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="field">-->
+<!--            <label>Подтвердите пароль</label>-->
+<!--            <div class="control">-->
+<!--              <input type="password" class="input" v-model="password2">-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <dt v-for="(values, name) in errors" :key="name">-->
+<!--                <dl>-->
+<!--                    <div v-if="Array.isArray(values)"> <li v-for="value in values" :key="value"> {{ value }} </li></div>-->
+<!--                    <div v-else> <li> {{ values }} </li> </div>-->
+<!--                </dl>-->
+<!--            </dt>-->
+<!--          <div class="field">-->
+<!--            <div class="control">-->
+<!--              <button class="button is-dark"> Зарегистрироваться </button>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <hr>-->
+<!--            Уже зарегистрированы? <router-link to="/log-in"> Войти </router-link>-->
+<!--        </form>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
 </template>
 
 <script>
@@ -109,5 +179,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>

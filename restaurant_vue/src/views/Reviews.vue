@@ -1,29 +1,191 @@
-<template xmlns="http://www.w3.org/1999/html">
+<template>
   <navbar></navbar>
-  <div class="feedbacks">
-    <section class="hero is-medium is-dark mb-6">
-      <div class="hero-body has-text-centered">
-        <p class="title mb-6">
-          Все о нас от вас)
-        </p>
-      </div>
-    </section>
-    <div class="form-control-feedback">
-      <div v-for="feeds in feedbacks">
-        <div class="has-feedback">
-              <h2 class="is-size-4">{{ feeds.author.username }}</h2>
-              <h3 class="is-size-5 has-text-grey">{{ feeds.text}}</h3>
-              <p class="is-size-5 has-text-grey">Дата публикации: {{ feeds.create_date }}</p>
+  <div class="super_container">
+      <!-- Home -->
+
+    <div class="home">
+      <div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="../assets/images/about.jpg" data-speed="0.8"> <img src="../assets/images/about.jpg"></div>
+      <div class="home_container">
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <div class="home_content text-center">
+                <div class="home_subtitle page_subtitle">The EMurr is</div>
+                <div class="home_title"><h1>О нас</h1></div>
+              </div>
             </div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="column" v-if="isAuthenticated">
-      <form @submit.prevent="CreateFeedbacks">
-        <input class="textarea" placeholder="Отзыв сюды" v-model="feedtext">
-        <button class="button is-dark">  Отправить </button>
-      </form>
+
+    <!-- Intro -->
+
+    <div class="intro">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="intro_content">
+              <div class="intro_subtitle page_subtitle">Something new</div>
+              <div class="intro_title"><h2>An Extraordinery Experience</h2></div>
+              <div class="intro_text">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada lorem maximus mauris scelerisque, at rutrum nulla dictum. Ut ac ligula sapien. Suspendisse cursus faucibus finibus. Ut non justo eleifend, facilisis nibh ut, interdum odio. Suspendisse potenti. Vivamus luctus diam eu neque rutrum, vitae aliquet dolor venenatis. Nulla consequat fringilla massa.</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-8">
+                <div class="intro_image"><img src="../assets/images/about_intro.jpg" alt="https://unsplash.com/@quanle2819"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chefs -->
+
+    <div class="chefs">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="section_title_container">
+              <div class="section_subtitle page_subtitle">Something new</div>
+              <div class="section_title"><h1>Meet the Chefs</h1></div>
+            </div>
+          </div>
+        </div>
+        <div class="row chefs_text_row">
+          <div class="col-lg-6">
+            <div class="chefs_text">
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada lorem maximus mauris scelerisque, at rutrum nulla dictum. Ut ac ligula sapien. Suspendisse cursus faucibus finibus. Ut non justo eleifend, facilisis nibh ut, interdum odio. Suspendisse potenti. Vivamus luctus diam eu neque rutrum, vitae aliquet dolor venenatis. Nulla consequat fringilla.</p>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="chefs_text">
+              <p>Sit amet, consectetur adipiscing elit. Donec malesuada lorem maximus mauris scelerisque, at rutrum nulla dictum. Ut ac ligula sapien. Suspendisse cursus faucibus finibus. Ut non justo eleifend, facilisis nibh ut, interdum odio. Suspendisse potenti. Vivamus luctus diam eu neque rutrum, vitae aliquet dolor venenatis. Nulla consequat fringilla.</p>
+            </div>
+          </div>
+        </div>
+        <div class="row chefs_row row-eq-height">
+
+          <!-- Chef -->
+          <div class="col-xl-3 col-md-6 chef_col d-flex flex-column align-items-center justify-content-end">
+            <div class="chef">
+              <div class="chef_image"><img src="../assets/images/chef_1.jpg" alt=""></div>
+              <div class="chef_content text-center">
+                <div class="chef_name">Maria Smith</div>
+                <div class="chef_subtitle">Top Chef</div>
+                <div class="chef_button ml-auto mr-auto trans_400"><a href="#">see more</a></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Chef -->
+          <div class="col-xl-3 col-md-6 chef_col d-flex flex-column align-items-center justify-content-end">
+            <div class="chef">
+              <div class="chef_image"><img src="../assets/images/chef_2.jpg" alt=""></div>
+              <div class="chef_content text-center">
+                <div class="chef_name">William Jones</div>
+                <div class="chef_subtitle">Sauce Chef</div>
+                <div class="chef_button ml-auto mr-auto trans_400"><a href="#">see more</a></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Chef -->
+          <div class="col-xl-3 col-md-6 chef_col d-flex flex-column align-items-center justify-content-end">
+            <div class="chef">
+              <div class="chef_image"><img src="../assets/images/chef_3.jpg" alt=""></div>
+              <div class="chef_content text-center">
+                <div class="chef_name">Julien Williams</div>
+                <div class="chef_subtitle">Sushi Chef</div>
+                <div class="chef_button ml-auto mr-auto trans_400"><a href="#">see more</a></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Chef -->
+          <div class="col-xl-3 col-md-6 chef_col d-flex flex-column align-items-center justify-content-end">
+            <div class="chef">
+              <div class="chef_image"><img src="../assets/images/chef_4.jpg" alt=""></div>
+              <div class="chef_content text-center">
+                <div class="chef_name">Suzie James</div>
+                <div class="chef_subtitle">Sauce Chef</div>
+                <div class="chef_button ml-auto mr-auto trans_400"><a href="#">see more</a></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Testimonials -->
+    <div class="themenu">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="section_title_container text-center">
+              <div class="section_title"><h1>Отзывы</h1></div>
+            </div>
+          </div>
+        </div>
+      <div class="row themenu_row">
+        <div class="col-lg-4 themenu_column" v-for="feeds in feedbacks">
+            <div class="themenu_col trans_400">
+              <div class="themenu_col_title">{{feeds.author.username}}</div>
+              <div class="dish_list">
+
+                <!-- Dish -->
+                <div class="dish">
+                    <div class="dish_title_container d-flex flex-xl-row flex-column align-items-start justify-content-start" >
+                      <div class="dish_title">{{ feeds.text }}</div>
+                    </div>
+                    <div class="dish_contents">
+                      <ul class="d-flex flex-row align-items-start justify-content-start flex-wrap">
+                        <li>{{feeds.create_date}}</li>
+                      </ul>
+                    </div>
+                </div>
+
+              </div>
+            </div>
+        </div>
+      </div>
+        <div class="column" v-if="isAuthenticated">
+          <form @submit.prevent="CreateFeedbacks">
+          <input class="textarea" placeholder="Отзыв сюды" v-model="feedtext">
+          <button class="button is-dark">  Отправить </button>
+        </form>
+        </div>
+      </div>
     </div>
   </div>
+  <Footer></Footer>
+<!--  <div class="feedbacks">-->
+<!--    <section class="hero is-medium is-dark mb-6">-->
+<!--      <div class="hero-body has-text-centered">-->
+<!--        <p class="title mb-6">-->
+<!--          Все о нас от вас)-->
+<!--        </p>-->
+<!--      </div>-->
+<!--    </section>-->
+<!--    <div class="form-control-feedback">-->
+<!--      <div v-for="feeds in feedbacks">-->
+<!--        <div class="has-feedback">-->
+<!--              <h2 class="is-size-4">{{ feeds.author.username }}</h2>-->
+<!--              <h3 class="is-size-5 has-text-grey">{{ feeds.text}}</h3>-->
+<!--              <p class="is-size-5 has-text-grey">Дата публикации: {{ feeds.create_date }}</p>-->
+<!--            </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="column" v-if="isAuthenticated">-->
+<!--      <form @submit.prevent="CreateFeedbacks">-->
+<!--        <input class="textarea" placeholder="Отзыв сюды" v-model="feedtext">-->
+<!--        <button class="button is-dark">  Отправить </button>-->
+<!--      </form>-->
+<!--    </div>-->
+<!--  </div>-->
 </template>
 
 <script>
@@ -31,9 +193,10 @@ import Navbar from "@/components/Navbar";
 import axios from "axios";
 import {mapGetters} from "vuex";
 import {toast} from "bulma-toast";
+import Footer from "@/components/Footer";
 export default {
   name: "Reviews",
-  components: {Navbar},
+  components: {Footer, Navbar},
   data(){
     return{
       userinfo: '',
@@ -74,7 +237,7 @@ export default {
           .then(response => {
                   toast({
                       message: 'Спасибо за ваш отзыв!',
-                      type: 'is-success',
+                      type: 'is-dark',
                       dismissible: true,
                       pauseOnHover: true,
                       duration: 2000,

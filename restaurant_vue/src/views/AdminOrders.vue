@@ -57,7 +57,7 @@
         <div class="column is-12">
             <h1 class="title column">Меню</h1>
         </div>
-        <div class="columns">
+        <div class="columns text-center">
           <div class="column">
             <button class="button sig_button trans_200" v-on:click="isOpen = 1"> Добавить блюдо </button>
           </div>
@@ -66,6 +66,9 @@
           </div>
           <div class="column">
             <button class="button sig_button trans_200" v-on:click="isOpen = 4"> Удалить категорию </button>
+          </div>
+          <div class="column">
+            <button class="button sig_button trans_200" v-on:click="isOpen = 6"> Отредактировать категорию </button>
           </div>
           <div class="column">
             <button class="button sig_button trans_200" v-on:click="isOpen = 3" > Удалить блюдо </button>
@@ -123,6 +126,11 @@
                 <div class="field">
                   <div class="control">
                     <input type="text" placeholder="Название категории" class="input" v-model="cat.name">
+                  </div>
+                </div>
+                <div class="field">
+                  <div class="control">
+                    <input type="file" placeholder="Загрузите фото категории" id="file" ref="file" v-on:change="UploadFile()">
                   </div>
                 </div>
                 <div class="field">
@@ -222,6 +230,37 @@
               </form>
           </div>
         </div>
+        <div v-if="isOpen === 6">
+            <div class="column is-4 is-offset-4">
+                <h1 class="title"> Обновление категории </h1>
+                <form>
+                  <label>Категория</label>
+                  <div class="control">
+                    <div class=" select is-rounded">
+                      <select v-model="cat.id" >
+                          <option  v-for="sl in category" v-bind:value="sl.id" >{{ sl.name }}</option>
+                      </select>
+                    </div>
+                  </div>
+                  <label>Название категории</label>
+                  <div class="field">
+                    <div class="control">
+                      <input type="text" class="input" v-model="cat.name">
+                    </div>
+                  </div>
+                  <div class="field">
+                    <div class="control">
+                      <input type="file" placeholder="Загрузите фото категории" id="file" ref="file" v-on:change="UploadFile()">
+                    </div>
+                  </div>
+                  <div class="field">
+                    <div class="control">
+                      <button class="button is-dark" @click="UpdateCategory(cat.id)"> Обновить </button>
+                    </div>
+                  </div>
+                </form>
+            </div>
+          </div>
     </div>
     <div v-if="isOpenAdmin === 3">
       <div class="column is-12">
@@ -280,11 +319,13 @@ export default {
       },
       idparam: '',
       bookings: '',
+      file: '',
     }
   },
   mounted() {
     this.getProduct()
     this.GetOrders()
+    document.title = "Страница администратора | ЭMurr"
     axios
           .get('http://localhost:8000/api/v1/category-list/')
           .then(response=>{
@@ -318,6 +359,9 @@ export default {
                       duration: 2000,
                       position: 'bottom-right',
                     })
+                  // this.orders.push(response.data)
+                  this.orders.delete(response.data)
+                  console.log(response.data)
               })
     },
     CreateProduct(){
@@ -341,17 +385,71 @@ export default {
                 })
           })
     },
+    UploadFile(){
+      this.file = this.$refs.file.files[0]
+
+    },
     CreateCategory(){
        axios.defaults.headers.common["Authorization"] = "Token" + localStorage.getItem("token")
-       const formData = {
-         name: this.cat.name,
-      }
+       let  formData = new FormData()
+       formData.append('name', this.cat.name)
+       formData.append('thumbnail', this.file)
        axios
-           .post('http://localhost:8000/api/v1/category-create/', formData)
+           .post('http://localhost:8000/api/v1/category-create/',
+               formData,
+               {
+                          headers: {
+                                      'Content-Type': 'media/upload'
+                                    }
+                      })
            .then(response => {
               toast({
                   message: 'Категория была создана',
-                  type: 'is-success',
+                  type: 'is-dark',
+                  dismissible: true,
+                  pauseOnHover: true,
+                  duration: 2000,
+                  position: 'bottom-right',
+                })
+          })
+           .catch(response => {
+              toast({
+                  message: 'Упс, что-то не так',
+                  type: 'is-danger',
+                  dismissible: true,
+                  pauseOnHover: true,
+                  duration: 2000,
+                  position: 'bottom-right',
+                })
+          })
+    },
+    UpdateCategory(cat_id){
+        axios.defaults.headers.common["Authorization"] = "Token" + localStorage.getItem("token")
+       let  formData = new FormData()
+       formData.append('name', this.cat.name)
+       formData.append('thumbnail', this.file)
+
+        axios
+            .post('http://localhost:8000/api/v1/category-update/'+ cat_id, formData,
+               {
+                          headers: {
+                                      'Content-Type': 'media/upload'
+                                    }
+                      })
+           .then(response => {
+              toast({
+                  message: 'Категория была обновлена',
+                  type: 'is-dark',
+                  dismissible: true,
+                  pauseOnHover: true,
+                  duration: 2000,
+                  position: 'bottom-right',
+                })
+          })
+           .catch(response => {
+              toast({
+                  message: 'Упс, что-то не так',
+                  type: 'is-danger',
                   dismissible: true,
                   pauseOnHover: true,
                   duration: 2000,
@@ -372,7 +470,7 @@ export default {
             .then(responce => {
               toast({
                   message: 'Позиция была обновлена',
-                  type: 'is-success',
+                  type: 'is-dark',
                   dismissible: true,
                   pauseOnHover: true,
                   duration: 2000,
@@ -388,7 +486,7 @@ export default {
            .then(response => {
               toast({
                   message: 'Категория была удалена',
-                  type: 'is-success',
+                  type: 'is-dark',
                   dismissible: true,
                   pauseOnHover: true,
                   duration: 2000,
@@ -404,7 +502,7 @@ export default {
            .then(response => {
               toast({
                   message: 'Позиция была удалена',
-                  type: 'is-success',
+                  type: 'is-dark',
                   dismissible: true,
                   pauseOnHover: true,
                   duration: 2000,
@@ -426,7 +524,7 @@ export default {
           .then(response => {
                   toast({
                       message: 'Заказ удален',
-                      type: 'is-success',
+                      type: 'is-dark',
                       dismissible: true,
                       pauseOnHover: true,
                       duration: 2000,

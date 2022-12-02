@@ -29,6 +29,8 @@ def FeedbacksCreate(request):
     serializer = FeedbacksCreateSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save()
-        return Response({"status": "Отзыв добавлен"})
+        feeds = Feedbacks.objects.last()
+        serializer2 = FeedbacksListSerializer(feeds)
+        return Response(serializer2.data)
     else:
         return Response({"status": "Error"})

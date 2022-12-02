@@ -73,9 +73,8 @@
             <div class="chef">
               <div class="chef_image"><img src="../assets/images/chef_1.jpg" alt=""></div>
               <div class="chef_content text-center">
-                <div class="chef_name">Maria Smith</div>
-                <div class="chef_subtitle">Top Chef</div>
-                <div class="chef_button ml-auto mr-auto trans_400"><a href="#">see more</a></div>
+                <div class="chef_name">Хасанова Элина</div>
+                <div class="chef_subtitle">Шеф Повар</div>
               </div>
             </div>
           </div>
@@ -85,9 +84,8 @@
             <div class="chef">
               <div class="chef_image"><img src="../assets/images/chef_2.jpg" alt=""></div>
               <div class="chef_content text-center">
-                <div class="chef_name">William Jones</div>
-                <div class="chef_subtitle">Sauce Chef</div>
-                <div class="chef_button ml-auto mr-auto trans_400"><a href="#">see more</a></div>
+                <div class="chef_name">Ахмадиев Азат</div>
+                <div class="chef_subtitle">Кондитер</div>
               </div>
             </div>
           </div>
@@ -97,9 +95,8 @@
             <div class="chef">
               <div class="chef_image"><img src="../assets/images/chef_3.jpg" alt=""></div>
               <div class="chef_content text-center">
-                <div class="chef_name">Julien Williams</div>
-                <div class="chef_subtitle">Sushi Chef</div>
-                <div class="chef_button ml-auto mr-auto trans_400"><a href="#">see more</a></div>
+                <div class="chef_name">Гибатдинов Нияз</div>
+                <div class="chef_subtitle">Суши Шеф</div>
               </div>
             </div>
           </div>
@@ -109,9 +106,8 @@
             <div class="chef">
               <div class="chef_image"><img src="../assets/images/chef_4.jpg" alt=""></div>
               <div class="chef_content text-center">
-                <div class="chef_name">Suzie James</div>
-                <div class="chef_subtitle">Sauce Chef</div>
-                <div class="chef_button ml-auto mr-auto trans_400"><a href="#">see more</a></div>
+                <div class="chef_name">Рахматуллина Гузель</div>
+                <div class="chef_subtitle">Су-Шеф</div>
               </div>
             </div>
           </div>
@@ -154,8 +150,8 @@
       </div>
         <div class="column" v-if="isAuthenticated">
           <form @submit.prevent="CreateFeedbacks">
-          <input class="textarea" placeholder="Отзыв сюды" v-model="feedtext">
-          <button class="button is-dark">  Отправить </button>
+          <input class="textarea" placeholder="Здесь вы можете оставить о нас отзыв" v-model="feedtext">
+          <button class="button sig_button trans_200">  Отправить </button>
         </form>
         </div>
       </div>
@@ -231,7 +227,7 @@ export default {
         author: this.userinfo.id,
         text: this.feedtext
       }
-      console.log(formData)
+      // console.log(formData)
       axios
           .post('http://localhost:8000/api/v2/feeds-create', formData)
           .then(response => {
@@ -243,6 +239,9 @@ export default {
                       duration: 2000,
                       position: 'bottom-right',
                     })
+
+                  this.feedbacks.push(response.data)
+                  this.feedtext.push('')
               })
     }
   },

@@ -69,6 +69,15 @@ def ProductUpdate(request, pk):
     return Response(serializer.data)
 
 
+@api_view(['POST'])
+def CategoryUpdate(request, pk):
+    category = Category.objects.get(id=pk)
+    serializer = CategoryCreateSerializer(instance=category, data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+    return Response(serializer.data)
+
+
 @api_view(['DELETE'])
 def CategoryDelete(request, pk):
     try:
@@ -120,6 +129,7 @@ def DeleteOrder(request, pk):
     except Orders.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
     if request.method == "DELETE":
+        serializer = OrdersListSerializer(order)
         order.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+        return Response(serializer.data)
 

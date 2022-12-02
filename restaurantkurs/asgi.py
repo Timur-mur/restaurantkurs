@@ -8,9 +8,23 @@ https://docs.djangoproject.com/en/4.1/howto/deployment/asgi/
 """
 
 import os
+import django
 
+from channels.routing import ProtocolTypeRouter, URLRouter
 from django.core.asgi import get_asgi_application
 
+from feedbacks.middlewares import WebSocketJWTAuthMiddleware
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'restaurantkurs.settings')
 
-application = get_asgi_application()
+from feedbacks import routing
+
+#application = get_asgi_application()
+
+application = ProtocolTypeRouter({
+    "http": get_asgi_application(),
+    "websocket": WebSocketJWTAuthMiddleware(
+        URLRouter(
+            routing.websocket_urlpatterns
+        )
+    )
+})

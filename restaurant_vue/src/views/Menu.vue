@@ -59,7 +59,7 @@
 
           <!-- Starters -->
           <div class="col-lg-4 themenu_column" v-for="cat in category">
-            <div class="themenu_image"><img v-bind:src="cat.get_image"></div>
+            <div class="themenu_image"><img :src="cat.get_thumbnail"></div>
             <div class="themenu_col trans_400">
               <div class="themenu_col_title">{{cat.name}}</div>
               <div class="dish_list">

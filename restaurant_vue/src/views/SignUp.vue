@@ -158,15 +158,14 @@ export default {
             })
             .then(response => {
               toast({
-                message: 'Регистрация прошла успешно! Войдите в аккаунт',
-                type: 'is-success',
+                message: 'Регистрация прошла успешно! Подтвердите e-mail, чтобы войти в аккаунт',
+                type: 'is-dark',
                 dismissible: true,
                 pauseOnHover: true,
-                duration: 2000,
+                duration: 20000,
                 position: 'bottom-right',
               })
               this.$router.push('log-in')
-              console.log(response)
             })
             .catch(error => {
               this.errors = error.response.data;

@@ -67,7 +67,7 @@ export default {
           .then(response => {
             toast({
                 message: 'Ура! Ваша почта активирована',
-                type: 'is-success',
+                type: 'is-dark',
                 dismissible: true,
                 pauseOnHover: true,
                 duration: 20000,

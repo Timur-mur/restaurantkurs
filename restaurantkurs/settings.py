@@ -48,13 +48,10 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'corsheaders',
     'djoser',
-    'channels',
 
     'product',
     'feedbacks',
-    'chat',
     'booking',
-
 ]
 CORS_ORIGIN_ALLOW_ALL = True
 # CORS_ALLOWED_ORIGINS = [
@@ -164,7 +161,6 @@ REST_FRAMEWORK = {
     ),
 
 }
-
 #SMTP
 EMAIL_HOST = os.environ['EMAIL_HOST']
 EMAIL_PORT = os.environ['EMAIL_PORT']

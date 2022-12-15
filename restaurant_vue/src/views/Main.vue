@@ -48,49 +48,6 @@
 		</div>
 	</div>
 
-	<!-- Signature Dish -->
-
-	<div class="sig">
-		<div class="sig_content_container">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-7">
-						<div class="sig_content">
-							<div class="sig_title"><h1>Наше фирменное блюдо</h1></div>
-							<div class="rating_r sig_rating rating_r_5"><i></i><i></i><i></i><i></i><i></i></div>
-							<div class="sig_name_container d-flex flex-row align-items-start justify-content-start">
-								<div class="sig_name">Свиная вырезка, маринованная в зеленом перце</div>
-								<div class="sig_price ml-auto">1199</div>
-							</div>
-							<div class="sig_content_list">
-								<ul class="d-flex flex-row align-items-center justify-content-start">
-									<li>Свинина</li>
-									<li>Вырезка</li>
-									<li>Зеленый перец</li>
-									<li>Овощи</li>
-								</ul>
-							</div>
-<!--							<div class="button sig_button trans_200"><a @click="addToCart(product)"> В корзину </a></div>-->
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="sig_image_container">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-7 offset-lg-5">
-						<div class="sig_image">
-							<div class="background_image">
-                <img src="../assets/images/sig.jpg">
-              </div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
 	<!-- Reservations -->
 
 	<div class="reservations text-center">
@@ -216,7 +173,7 @@ export default {
           .catch(response => {
                   toast({
                       message: 'Войдите в аккаунт, чтобы забронировать столик',
-                      type: 'is-dark',
+                      type: 'is-danger',
                       dismissible: true,
                       pauseOnHover: true,
                       duration: 5000,

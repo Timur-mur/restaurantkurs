@@ -57,25 +57,14 @@
         <div class="column is-12">
             <h1 class="title column">Меню</h1>
         </div>
-        <div class="columns text-center">
-          <div class="column">
+        <div class="center-block">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="button sig_button trans_200" v-on:click="isOpen = 1"> Добавить блюдо </button>
-          </div>
-          <div class="column">
             <button class="button sig_button trans_200" v-on:click="isOpen = 2"> Добавить категорию </button>
-          </div>
-          <div class="column">
             <button class="button sig_button trans_200" v-on:click="isOpen = 4"> Удалить категорию </button>
-          </div>
-          <div class="column">
             <button class="button sig_button trans_200" v-on:click="isOpen = 6"> Отредактировать категорию </button>
-          </div>
-          <div class="column">
             <button class="button sig_button trans_200" v-on:click="isOpen = 3" > Удалить блюдо </button>
-          </div>
-          <div class="column">
             <button class="button sig_button trans_200" v-on:click="isOpen = 5" > Отредактировать блюдо </button>
-          </div>
         </div>
       </div>
       <div v-if="isOpen === 1">
@@ -353,15 +342,13 @@ export default {
           .then(response => {
                   toast({
                       message: 'Заказ удален',
-                      type: 'is-success',
+                      type: 'is-dark',
                       dismissible: true,
                       pauseOnHover: true,
                       duration: 2000,
                       position: 'bottom-right',
                     })
-                  // this.orders.push(response.data)
-                  this.orders.delete(response.data)
-                  console.log(response.data)
+                  this.orders = this.orders.filter(el => el.id !== id)
               })
     },
     CreateProduct(){
@@ -530,6 +517,7 @@ export default {
                       duration: 2000,
                       position: 'bottom-right',
                     })
+                  this.bookings = this.bookings.filter(el => el.id !== id)
               })
     },
   },

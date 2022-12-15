@@ -110,12 +110,13 @@ export default {
           .then(response => {
                   toast({
                       message: 'Заказ удален',
-                      type: 'is-success',
+                      type: 'is-dark',
                       dismissible: true,
                       pauseOnHover: true,
                       duration: 2000,
                       position: 'bottom-right',
                     })
+                  this.orders = this.orders.filter(el => el.id !== id)
               })
     },
     GetBooking(idcli){
@@ -140,6 +141,7 @@ export default {
                       duration: 2000,
                       position: 'bottom-right',
                     })
+                  this.booking = this.booking.filter(el => el.id !== id)
               })
     },
   }

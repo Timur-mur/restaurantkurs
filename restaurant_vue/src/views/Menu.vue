@@ -79,7 +79,6 @@
                     <div class="dish_order"><a @click="addToCart(prod)"> В корзину </a></div>
                   </div>
                 </div>
-
               </div>
             </div>
           </div>
@@ -107,9 +106,9 @@ export default {
     }
   },
    mounted() {
-    this.$store.commit("updateCartFromLocalStorage")
+     this.$store.commit("updateCartFromLocalStorage")
      this.getProduct()
-    axios
+     axios
           .get('http://localhost:8000/api/v1/category-list/')
           .then(response=>{
             this.category = response.data

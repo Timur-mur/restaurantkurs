@@ -107,7 +107,7 @@ export default {
           .then(response => {
               toast({
                   message: 'Уже начали готовить! Спасибо, что вы с нами',
-                  type: 'is-success',
+                  type: 'is-dark',
                   dismissible: true,
                   pauseOnHover: true,
                   duration: 2000,

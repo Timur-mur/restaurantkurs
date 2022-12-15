@@ -26,11 +26,10 @@
         <div class="row">
           <div class="col">
             <div class="intro_content">
-              <div class="intro_subtitle page_subtitle">Something new</div>
-              <div class="intro_title"><h2>An Extraordinery Experience</h2></div>
-              <div class="intro_text">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada lorem maximus mauris scelerisque, at rutrum nulla dictum. Ut ac ligula sapien. Suspendisse cursus faucibus finibus. Ut non justo eleifend, facilisis nibh ut, interdum odio. Suspendisse potenti. Vivamus luctus diam eu neque rutrum, vitae aliquet dolor venenatis. Nulla consequat fringilla massa.</p>
-              </div>
+						  <div class="intro_title"><h2>Ресторан Французской кухни</h2></div>
+						  <div class="intro_text">
+							  <p>В интерьере, как и на улочках французских городов, соседствуют очаровательные детали прошлого и настоящего, что создает неповторимый дух места «с историей». Негромко звучащие композиции в исполнении знаменитых шансонье с легкостью прогоняют прочь печали и настраивают на мечтательный лад – как будто вы, перешагнув порог, мгновенно перенеслись в легкомысленный и беззаботный Париж.</p>
+						  </div>
             </div>
             <div class="row">
               <div class="col-lg-8">
@@ -50,7 +49,7 @@
           <div class="col">
             <div class="section_title_container">
               <div class="section_subtitle page_subtitle">Something new</div>
-              <div class="section_title"><h1>Meet the Chefs</h1></div>
+              <div class="section_title"><h1>Познакомьтесь с нашими поварами</h1></div>
             </div>
           </div>
         </div>
@@ -208,7 +207,7 @@ export default {
   methods:{
     GetFeedbacks(){
       axios
-          .get('http://localhost:8000/api/v2/feedbacks')
+          .get('http://localhost:8000/api/v2/feedbacks/')
           .then(response =>{
             this.feedbacks = response.data
             document.title = 'Отзывы | Эmurr'
@@ -229,7 +228,7 @@ export default {
       }
       // console.log(formData)
       axios
-          .post('http://localhost:8000/api/v2/feeds-create', formData)
+          .post('http://localhost:8000/api/v2/feeds-create/', formData)
           .then(response => {
                   toast({
                       message: 'Спасибо за ваш отзыв!',

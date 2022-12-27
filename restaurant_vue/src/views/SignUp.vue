@@ -70,52 +70,6 @@
         </form>
       </div>
     </div>
-<!--  <div class="page-sign-up">-->
-<!--    <div class="columns">-->
-<!--      <div class="column is-4 is-offset-4">-->
-<!--        <h1 class="title"> Регистрация </h1>-->
-<!--        <form ref="registerForm" @submit.prevent="submitForm">-->
-<!--          <div class="field">-->
-<!--            <label>Имя пользователя</label>-->
-<!--            <div class="control">-->
-<!--              <input type="text" class="input" v-model="username">-->
-<!--            </div>-->
-<!--          </div>-->
-<!--          <div class="field">-->
-<!--            <label>E-mail</label>-->
-<!--            <div class="control">-->
-<!--              <input type="email" class="input" v-model="email">-->
-<!--            </div>-->
-<!--          </div>-->
-<!--          <div class="field">-->
-<!--            <label>Пароль</label>-->
-<!--            <div class="control">-->
-<!--              <input type="password" class="input" v-model="password">-->
-<!--            </div>-->
-<!--          </div>-->
-<!--          <div class="field">-->
-<!--            <label>Подтвердите пароль</label>-->
-<!--            <div class="control">-->
-<!--              <input type="password" class="input" v-model="password2">-->
-<!--            </div>-->
-<!--          </div>-->
-<!--          <dt v-for="(values, name) in errors" :key="name">-->
-<!--                <dl>-->
-<!--                    <div v-if="Array.isArray(values)"> <li v-for="value in values" :key="value"> {{ value }} </li></div>-->
-<!--                    <div v-else> <li> {{ values }} </li> </div>-->
-<!--                </dl>-->
-<!--            </dt>-->
-<!--          <div class="field">-->
-<!--            <div class="control">-->
-<!--              <button class="button is-dark"> Зарегистрироваться </button>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--          <hr>-->
-<!--            Уже зарегистрированы? <router-link to="/log-in"> Войти </router-link>-->
-<!--        </form>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
 </template>
 
 <script>

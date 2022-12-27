@@ -1,8 +1,6 @@
 <template>
   <navbar></navbar>
   <div class="super_container">
-      <!-- Home -->
-
     <div class="home">
       <div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="../assets/images/about.jpg" data-speed="0.8"> <img src="../assets/images/about.jpg"></div>
       <div class="home_container">
@@ -18,9 +16,6 @@
         </div>
       </div>
     </div>
-
-    <!-- Intro -->
-
     <div class="intro">
       <div class="container">
         <div class="row">
@@ -40,9 +35,6 @@
         </div>
       </div>
     </div>
-
-    <!-- Chefs -->
-
     <div class="chefs">
       <div class="container">
         <div class="row">
@@ -66,8 +58,6 @@
           </div>
         </div>
         <div class="row chefs_row row-eq-height">
-
-          <!-- Chef -->
           <div class="col-xl-3 col-md-6 chef_col d-flex flex-column align-items-center justify-content-end">
             <div class="chef">
               <div class="chef_image"><img src="../assets/images/chef_1.jpg" alt=""></div>
@@ -77,8 +67,6 @@
               </div>
             </div>
           </div>
-
-          <!-- Chef -->
           <div class="col-xl-3 col-md-6 chef_col d-flex flex-column align-items-center justify-content-end">
             <div class="chef">
               <div class="chef_image"><img src="../assets/images/chef_2.jpg" alt=""></div>
@@ -88,8 +76,6 @@
               </div>
             </div>
           </div>
-
-          <!-- Chef -->
           <div class="col-xl-3 col-md-6 chef_col d-flex flex-column align-items-center justify-content-end">
             <div class="chef">
               <div class="chef_image"><img src="../assets/images/chef_3.jpg" alt=""></div>
@@ -99,8 +85,6 @@
               </div>
             </div>
           </div>
-
-          <!-- Chef -->
           <div class="col-xl-3 col-md-6 chef_col d-flex flex-column align-items-center justify-content-end">
             <div class="chef">
               <div class="chef_image"><img src="../assets/images/chef_4.jpg" alt=""></div>
@@ -110,12 +94,9 @@
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </div>
-
-    <!-- Testimonials -->
     <div class="themenu">
       <div class="container">
         <div class="row">
@@ -130,8 +111,6 @@
             <div class="themenu_col trans_400">
               <div class="themenu_col_title">{{feeds.author.username}}</div>
               <div class="dish_list">
-
-                <!-- Dish -->
                 <div class="dish">
                     <div class="dish_title_container d-flex flex-xl-row flex-column align-items-start justify-content-start" >
                       <div class="dish_title">{{ feeds.text }}</div>
@@ -142,7 +121,6 @@
                       </ul>
                     </div>
                 </div>
-
               </div>
             </div>
         </div>
@@ -157,30 +135,6 @@
     </div>
   </div>
   <Footer></Footer>
-<!--  <div class="feedbacks">-->
-<!--    <section class="hero is-medium is-dark mb-6">-->
-<!--      <div class="hero-body has-text-centered">-->
-<!--        <p class="title mb-6">-->
-<!--          Все о нас от вас)-->
-<!--        </p>-->
-<!--      </div>-->
-<!--    </section>-->
-<!--    <div class="form-control-feedback">-->
-<!--      <div v-for="feeds in feedbacks">-->
-<!--        <div class="has-feedback">-->
-<!--              <h2 class="is-size-4">{{ feeds.author.username }}</h2>-->
-<!--              <h3 class="is-size-5 has-text-grey">{{ feeds.text}}</h3>-->
-<!--              <p class="is-size-5 has-text-grey">Дата публикации: {{ feeds.create_date }}</p>-->
-<!--            </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="column" v-if="isAuthenticated">-->
-<!--      <form @submit.prevent="CreateFeedbacks">-->
-<!--        <input class="textarea" placeholder="Отзыв сюды" v-model="feedtext">-->
-<!--        <button class="button is-dark">  Отправить </button>-->
-<!--      </form>-->
-<!--    </div>-->
-<!--  </div>-->
 </template>
 
 <script>

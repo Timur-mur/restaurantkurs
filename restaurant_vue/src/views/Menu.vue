@@ -1,8 +1,6 @@
 <template>
 <navbar></navbar>
   <div class="super_container">
-    <!-- Home -->
-
     <div class="home">
       <div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="images/menu.jpg" data-speed="0.8"><img src="../assets/images/menu.jpg"></div>
       <div class="home_container">
@@ -18,9 +16,6 @@
         </div>
       </div>
     </div>
-
-    <!-- The Menu -->
-
     <div class="themenu">
       <div class="container">
         <div class="row">
@@ -56,15 +51,11 @@
 				</div>
 			</div>
         <div class="row themenu_row">
-
-          <!-- Starters -->
           <div class="col-lg-4 themenu_column" v-for="cat in category">
             <div class="themenu_image"><img :src="cat.get_thumbnail"></div>
             <div class="themenu_col trans_400">
               <div class="themenu_col_title">{{cat.name}}</div>
               <div class="dish_list">
-
-                <!-- Dish -->
                 <div class="dish" v-for="prod in products">
                   <div v-if="prod.category===cat.id">
                     <div class="dish_title_container d-flex flex-xl-row flex-column align-items-start justify-content-start" >

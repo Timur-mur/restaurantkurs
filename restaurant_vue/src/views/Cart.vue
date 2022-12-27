@@ -31,12 +31,6 @@
           <thead>
             <tr>
               <th>Общая стоимость: {{cart_total}}</th>
-<!--              <th>-->
-<!--                  <input placeholder="Введите номер столика"  type="number" class="input" v-model="table">-->
-<!--              </th>-->
-<!--              <th>-->
-<!--                    <button class="button sig_button trans_200" @click="PostOrder"> Заказать </button>-->
-<!--              </th>-->
             </tr>
           </thead>
         </table>

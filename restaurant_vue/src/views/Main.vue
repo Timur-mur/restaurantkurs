@@ -1,8 +1,6 @@
 <template>
   <div class="super_container">
     <navbar></navbar>
-    <!-- Home -->
-
 	<div class="home">
 		<div class="parallax_background parallax-window" data-parallax="scroll" data-speed="0.8"><img src="../assets/images/home.jpg"></div>
 		<div class="home_container">
@@ -21,9 +19,6 @@
 			</div>
 		</div>
 	</div>
-
-	<!-- Intro -->
-
 	<div class="intro">
 		<div class="container">
 			<div class="row">
@@ -47,9 +42,6 @@
 			</div>
 		</div>
 	</div>
-
-	<!-- Reservations -->
-
 	<div class="reservations text-center">
 		<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="../assets/images/reservations.jpg" data-speed="0.8"><img style="height: 700px" src="../assets/images/reservations.jpg"></div>
 		<div class="container">
@@ -88,31 +80,9 @@
 			</div>
 		</div>
 	</div>
-<!--    <div class="home">-->
-<!--      <section class="hero is-medium is-dark mb-6">-->
-<!--        <div class="hero-body has-text-centered">-->
-<!--          <p class="title mb-6">-->
-<!--            Ресторан Эmurr-->
-<!--          </p>-->
-<!--        </div>-->
-<!--      </section>-->
-<!--      <div class="columns is-multiline">-->
-<!--        <div class="column is-12">-->
-<!--          <h2 class="is-size-2  has-text-centered"> Новые блюда </h2>-->
-<!--        </div>-->
-<!--        <div class="column is-3" v-for="product in Products" v-bind:key="product.id">-->
-<!--          <div class="box">-->
-<!--            <h2 class="is-size-4">{{ product.name }}</h2>-->
-<!--            <h3 class="is-size-5 has-text-grey">{{ product.description}}</h3>-->
-<!--             <p class="is-size-5 has-text-grey">{{ product.price }}</p>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
     <Footer></Footer>
   </div>
 </template>
-
 <script>
 import Navbar from "@/components/Navbar";
 import axios from "axios";
@@ -184,7 +154,6 @@ export default {
   },
 }
 </script>
-
 <style scoped>
 @import "../assets/styles/bootstrap-4.1.2/bootstrap.min.css";
 @import "../assets/styles/elements_responsive.css";

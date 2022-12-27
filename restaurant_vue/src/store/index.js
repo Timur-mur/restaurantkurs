@@ -14,11 +14,6 @@ export default createStore({
     isAuthenticated: (state) => state.isAuthenticated,
     token: (state) => state.token,
     username: (state) => state.username,
-    // productQuantity: (state) => product => {
-    //   const item = state.cart.find(i => i.id === product.id)
-    //   if (item) return item.quantity
-    //   else return null
-    // },
     cartItems: (state) => {
       return state.cart
     },
